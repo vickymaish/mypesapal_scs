@@ -4,13 +4,14 @@
 This documentation outlines the design, implementation, and the key features of the distributed source control system (SCS). It aims to provide users with a clear understanding of how to set up and use the system, as well as the underlying architecture that makes it functional. The purpose of this project was to replicate core features of version control systems, such as Git, and implement them using a custom-built system.
 
 ## Table of Contents
+
 1. [User Guide](#user-guide)
-2. [Features of the Source Control System](#features-of-the-source-control-system)
-3. [Data Structures and Algorithms Used](#data-structures-and-algorithms-used)
-4. [Use of SHA-1 Hashing](#use-of-sha-1-hashing)
-5. [Traversing through Commit Hashes](#traversing-through-commit-hashes)
-6. [User Interface with Rich](#user-interface-with-rich)
-7. [Setup and Installation Guide](#setup-and-installation-guide)
+2. [Setup and Installation Guide](#setup-and-installation-guide)
+3. [Features of the Source Control System](#features-of-the-source-control-system)
+4. [Data Structures and Algorithms Used](#data-structures-and-algorithms-used)
+5. [Use of SHA-1 Hashing](#use-of-sha-1-hashing)
+6. [Traversing through Commit Hashes](#traversing-through-commit-hashes)
+7. [User Interface with Rich](#user-interface-with-rich)
 8. [Purpose and Functionality of the .bat File](#purpose-and-functionality-of-the-bat-file)
    
 
@@ -118,7 +119,7 @@ pip install -r requirements.txt
 python myscs.py
 2. Install dependencies:
 
-
+---
 # Feature 1: Initializing a Repository
 
 ## Overview:
