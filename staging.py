@@ -44,6 +44,20 @@ def stage_file(file_path):
     """
     Stage a file by adding it to the .myscs/index file.
     """
+    # If the file path is '.', stage all non-ignored files
+    if file_path == ".":
+        files = [f for f in os.listdir() if os.path.isfile(f) and not is_ignored(f, load_myscsignore())]
+        for file in files:
+            stage_single_file(file)
+        return
+
+    # Stage the file normally
+    stage_single_file(file_path)
+
+def stage_single_file(file_path):
+    """
+    Stage a single file and add it to the .myscs/index file.
+    """
     # Load ignore patterns
     ignore_patterns = load_myscsignore()
 
