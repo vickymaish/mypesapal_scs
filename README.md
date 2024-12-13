@@ -28,6 +28,7 @@ def initialize_repository():
         print("Repository initialized successfully.")
 
 
+
         
 ## Feature 2: Staging Files (git add)
 Overview:
