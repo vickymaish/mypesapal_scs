@@ -101,10 +101,11 @@ To get started:
 1. Clone the repository:
    ```bash
    git clone <repository_url>
+---   
 Make sure to use a virtual environment:
 ```bash
 python -m venv venv
-
+---
 Activate the environment:
 ```bash
 source venv/bin/activate  # Linux/Mac
