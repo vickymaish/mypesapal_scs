@@ -44,8 +44,9 @@ def init_repo():
      pass
 
  print(f"Initialized an empty repository in {os.getcwd()}")
+"""
 
-## Feature 2: Staging Files (`git add`)
+## Feature 2: Staging Files (`myscs add`)
 
 ### Objective:
 Allow users to stage files for commit, similar to `git add`. This enables users to prepare their changes for the next commit.
@@ -64,4 +65,4 @@ Allow users to stage files for commit, similar to `git add`. This enables users 
 ### Example:
 1. To stage a file:
    ```bash
-   myscs add test.txt
+   myscs add test.txt      
