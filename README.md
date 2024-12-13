@@ -100,26 +100,25 @@ The `rich` Python library is used to create visually appealing command-line outp
 To get started:
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
----   
-Make sure to use a virtual environment:
-```bash
-python -m venv venv
+   git clone <https://github.com/vickymaish/mypesapal_scs>
+--- 
 ---
-Activate the environment:
-```bash
-source venv/bin/activate  # Linux/Mac
-.\venv\Scripts\activate  # Windows (I used windows)
+2. Make sure to use a virtual environment:
+   ```bash
+    python -m venv venv     
 
-3. Install required dependencies:
-```bash
-pip install -r requirements.txt
 
-. To run the system, use the following command:
-```bash
-python myscs.py
-2. Install dependencies:
+3. Activate the environment
+   ```bash
+    .\venv\Scripts\activate  # Windows (I used windows)
 
+4. Install required dependencies
+   ```bash
+   pip install -r requirements.txt
+5. To run the system use the following command
+   ```bash
+   python myscs.py
+---
 ---
 # Feature 1: Initializing a Repository
 
