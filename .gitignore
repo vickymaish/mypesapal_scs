@@ -1,0 +1,23 @@
+# Ignore Python virtual environment
+venv/
+
+# Ignore compiled Python files
+__pycache__/
+
+# Ignore logs
+*.log
+
+# Ignore Git metadata
+.myscs/
+.myscsignore
+
+# Ignore binary files
+*.bin
+*.png
+
+# Ignore test data
+text*.txt
+test*.txt
+
+# Ignore IDE settings and VS Code files
+.vscode/
