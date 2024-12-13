@@ -44,25 +44,6 @@ def init_repo():
      pass
 
  print(f"Initialized an empty repository in {os.getcwd()}")
-"""
 
-## Feature 2: Staging Files (`myscs add`)
 
-### Objective:
-Allow users to stage files for commit, similar to `git add`. This enables users to prepare their changes for the next commit.
 
-### Approach:
-- **Command**: `myscs add <file_path>` stages a specific file.
-- **Index**: The `.myscs/index` file tracks staged files with their respective SHA-1 hashes.
-- **File Ignoring**: Files matching patterns in the `.myscsignore` file are skipped.
-- **Handling Duplicates**: Files already staged will not be added again to prevent redundant entries.
-
-### Code Explanation:
-- **`load_myscsignore`**: Loads the ignore patterns from the `.myscsignore` file.
-- **`is_ignored`**: Checks if a file should be ignored based on these patterns.
-- **`stage_file`**: Stages the file by adding its path and hash to the index, while checking for duplicates.
-
-### Example:
-1. To stage a file:
-   ```bash
-   myscs add test.txt      
