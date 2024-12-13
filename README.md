@@ -12,6 +12,7 @@ This documentation outlines the design, implementation, and the key features of 
 6. [User Interface with Rich](#user-interface-with-rich)
 7. [Setup and Installation Guide](#setup-and-installation-guide)
 8. [Purpose and Functionality of the .bat File](#purpose-and-functionality-of-the-bat-file)
+   
 
 ---
 
@@ -48,9 +49,11 @@ The source control system replicates key functionalities of Git:
 1. **Initializing a Repository**: Creates a hidden directory `.myscs` and stores essential files.
 2. **Staging Files**: Tracks files with their hashes before committing.
 3. **Committing Changes**: Records staged files and their changes, associating them with a unique commit hash.
-4. **Viewing Commit History**: Allows the user to see a chronological list of commits.
+4. **Viewing Commit History**: The user can see a chronological list of commits.
 5. **Branching and Merging**: Supports multiple branches and merging functionality.
 6. **Conflict Detection**: Alerts users if branches have diverged or contain conflicting changes.
+7. **Cloning**: Gives users the ability to clone a repo on the local machine and create a destination folder with copied items.
+8. **Ignoring files**: Allows users to select the files the do not want to get staged when the myscs add/ add . is entered.
 
 ---
 
