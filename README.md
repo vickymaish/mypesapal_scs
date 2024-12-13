@@ -47,3 +47,102 @@ def init_repo():
 
 
 
+## Feature 2: Staging Files (`git add`)
+
+### Objective:
+Allow users to stage files for commit, similar to `git add`. This enables users to prepare their changes for the next commit.
+
+### Approach:
+- **Command**: `myscs add <file_path>` stages a specific file.
+- **Index**: The `.myscs/index` file tracks staged files with their respective SHA-1 hashes.
+- **File Ignoring**: Files matching patterns in the `.myscsignore` file are skipped.
+- **Handling Duplicates**: Files already staged will not be added again to prevent redundant entries.
+
+### Code Explanation:
+```python
+import os
+import hashlib
+from fnmatch import fnmatch
+from rich.console import Console
+
+# Initialize Rich console for output
+console = Console()
+
+def load_myscsignore():
+    """
+    Load ignore patterns from the .myscsignore file.
+    Returns a list of patterns.
+    """
+    ignore_file = ".myscsignore"
+    patterns = []
+    if os.path.exists(ignore_file):
+        with open(ignore_file, "r") as f:
+            for line in f:
+                # Ignore empty lines and comments
+                line = line.strip()
+                if line and not line.startswith("#"):
+                    patterns.append(line)
+    return patterns
+
+def is_ignored(file_path, ignore_patterns):
+    """
+    Check if a file matches any pattern in the .myscsignore file.
+    """
+    for pattern in ignore_patterns:
+        if fnmatch(file_path, pattern):
+            return True
+    return False
+
+def stage_file(file_path):
+    """
+    Stage a file by adding it to the .myscs/index file.
+    """
+    # Load ignore patterns
+    ignore_patterns = load_myscsignore()
+
+    # Check if the file is ignored
+    if is_ignored(file_path, ignore_patterns):
+        console.print(f"Skipped: File '{file_path}' is ignored (matches .myscsignore).", style="yellow")
+        return
+
+    # Check if the file exists
+    if not os.path.exists(file_path):
+        console.print(f"Error: File '{file_path}' not found.", style="bold red")
+        return
+
+    try:
+        # Calculate the file hash (SHA-1)
+        hasher = hashlib.sha1()
+        with open(file_path, 'rb') as f:
+            while chunk := f.read(8192):
+                hasher.update(chunk)
+        file_hash = hasher.hexdigest()
+
+        # Ensure the index file exists
+        index_path = ".myscs/index"
+        if not os.path.exists(index_path):
+            with open(index_path, 'w') as _:
+                pass  # Create an empty index file if it doesn't exist
+
+        # Load current index entries
+        staged_files = set()
+        with open(index_path, 'r') as index_file:
+            for line in index_file:
+                staged_files.add(line.strip())
+
+        # Check for duplicates
+        entry = f"{file_path} {file_hash}"
+        if entry in staged_files:
+            console.print(f"File '{file_path}' is already staged.", style="yellow")
+            return
+
+        # Add the new entry to the index
+        with open(index_path, 'a') as index_file:
+            index_file.write(entry + "\n")
+
+        console.print(f"Success: File '{file_path}' staged successfully.", style="bold green")
+
+    except Exception as e:
+        console.print(f"Error staging the file. Details: {str(e)}", style="bold red")
+
+
