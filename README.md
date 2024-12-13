@@ -1,8 +1,8 @@
-Feature 1: Initializing a Repository
+## Feature 1: Initializing a Repository
 Overview:
 The system allows users to initialize a repository in a directory. This is the foundational step in creating a distributed source control system, similar to git init in Git. The repository is stored in a dot-prefixed subdirectory (i.e., .myscs), where all the essential information related to version control is stored.
 
-Key Operations:
+## Key Operations:
 Initialize Repository: Users can initialize a repository in any directory using the myscs init command. This command sets up a .myscs directory within the current directory.
 Repository Structure:
 .myscs: The main directory that holds the version control data.
@@ -12,9 +12,8 @@ Repository Structure:
 How It Works:
 When a user runs myscs init, the system checks if the .myscs directory exists. If it doesn't, the system creates it along with the necessary subdirectories. The initialization also creates an empty index file and a HEAD file that references the default branch (main), marking the start of the repository.
 
-Code Snippet (Example of Initialization):
-python
-Copy code
+# Initializing a repository 
+
 def initialize_repository():
     """
     Initializes the repository by creating the .myscs directory structure.
@@ -27,7 +26,10 @@ def initialize_repository():
         with open(".myscs/HEAD", "w") as head_file:
             head_file.write("ref: refs/heads/main\n")  # Default branch 'main'
         print("Repository initialized successfully.")
-Feature 2: Staging Files (git add)
+
+
+        
+## Feature 2: Staging Files (git add)
 Overview:
 This feature allows users to stage files before committing them, just like the git add command in Git. The staged files are tracked in the .myscs/index file, which keeps a record of the file paths and their corresponding hashes. This step is essential for preparing files for a commit.
 
@@ -39,9 +41,9 @@ How It Works:
 Calculate Hash: The system computes the SHA-1 hash of each file to ensure its integrity and uniqueness.
 Staging: Once the file is staged, its path and hash are written into the .myscs/index file. This file acts as a record of staged changes.
 Skipping Already Staged Files: If a file has already been staged (based on its path and hash), the system skips staging it again and provides a message to inform the user.
-Code Snippet (Example of Staging a File):
-python
-Copy code
+
+
+# Staging a File
 import hashlib
 import os
 
