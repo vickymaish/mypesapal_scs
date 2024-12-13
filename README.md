@@ -102,22 +102,7 @@ To get started:
    git clone <repository_url>
 
 2. Install dependencies:
-Make sure to use a virtual environment:
-```bash
-python -m venv venv
 
-Activate the environment:
-```bash
-source venv/bin/activate  # Linux/Mac
-.\venv\Scripts\activate  # Windows (I used windows)
-
-3. Install required dependencies:
-```bash
-pip install -r requirements.txt
-
-. To run the system, use the following command:
-```bash
-python myscs.py
 
 # Feature 1: Initializing a Repository
 
