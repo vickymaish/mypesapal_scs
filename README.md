@@ -1,3 +1,104 @@
+# Documentation of Source Control System (SCS)
+
+## Purpose of the Documentation
+This documentation outlines the design, implementation, and the key features of the distributed source control system (SCS). It aims to provide users with a clear understanding of how to set up and use the system, as well as the underlying architecture that makes it functional. The purpose of this project was to replicate core features of version control systems, such as Git, and implement them using a custom-built system.
+
+## Table of Contents
+1. [User Guide](#user-guide)
+2. [Features of the Source Control System](#features-of-the-source-control-system)
+3. [Data Structures and Algorithms Used](#data-structures-and-algorithms-used)
+4. [Use of SHA-1 Hashing](#use-of-sha-1-hashing)
+5. [Traversing through Commit Hashes](#traversing-through-commit-hashes)
+6. [User Interface with Rich](#user-interface-with-rich)
+7. [Setup and Installation Guide](#setup-and-installation-guide)
+8. [Purpose and Functionality of the .bat File](#purpose-and-functionality-of-the-bat-file)
+
+---
+
+## User Guide
+This section explains how to use the custom-built source control system.
+
+1. **Initialize a Repository**
+    - Use the `myscs init` command to initialize a new repository.
+    - The repository is stored in a hidden `.myscs` directory.
+
+2. **Stage Files (`git add`)**
+    - Stage files using `myscs add <file_path>`.
+
+3. **Commit Changes (`git commit`)**
+    - Commit staged files using `myscs commit "<commit_message>"`.
+
+4. **View Commit History (`git log`)**
+    - Use `myscs log` to view the commit history.
+
+5. **Create and Switch Branches**
+    - Create new branches with `myscs branch <branch_name>`.
+    - Switch between branches with `myscs switch <branch_name>`.
+
+6. **Merge Branches**
+    - Merge branches with `myscs merge <branch_name>`.
+
+7. **Clone a Repository**
+    - Use `myscs clone` to clone a repository to a different directory.
+
+---
+
+## Features of the Source Control System
+The source control system replicates key functionalities of Git:
+1. **Initializing a Repository**: Creates a hidden directory `.myscs` and stores essential files.
+2. **Staging Files**: Tracks files with their hashes before committing.
+3. **Committing Changes**: Records staged files and their changes, associating them with a unique commit hash.
+4. **Viewing Commit History**: Allows the user to see a chronological list of commits.
+5. **Branching and Merging**: Supports multiple branches and merging functionality.
+6. **Conflict Detection**: Alerts users if branches have diverged or contain conflicting changes.
+
+---
+
+## Data Structures and Algorithms Used
+
+### Data Structures:
+- **Hash Tables**: Used to store file hashes and staged files.
+- **Linked List**: The commit history is modeled using a linked list structure.
+- **Trees**: The repository’s branch system is modeled using trees.
+
+### Algorithms:
+- **SHA-1 Hashing**: Used to generate unique identifiers (hashes) for files and commits.
+- **BFS**: Used for traversing the commit history.
+- **Merge Algorithm**: A simple merge algorithm checks for conflicting changes but does not resolve them automatically.
+
+---
+
+## Use of SHA-1 Hashing
+
+SHA-1 hashing is integral to the source control system. It is used to generate unique hashes for files and commits. SHA-1 ensures that any change in the content of a file or commit will generate a new hash, making it easy to track the evolution of the repository.
+
+---
+
+## Traversing through Commit Hashes
+
+The commit history is represented as a chain of commit objects, where each commit object stores:
+- **Commit Hash**: A unique identifier for the commit.
+- **Parent Commit Hash**: Links to the previous commit, forming a chain.
+
+---
+
+## User Interface with Rich
+
+The `rich` Python library is used to create visually appealing command-line output. Key features include:
+- **Styled Text**: Commit history and error messages are displayed in colored text.
+- **Tables**: Commit logs are displayed in organized tables with styled columns.
+- **Interactive**: The UI allows users to interact with the system and receive real-time feedback.
+
+---
+
+## Setup and Installation Guide
+
+To get started:
+1. Clone the repository:
+   ```bash
+   git clone <repository_url>
+
+
 # Feature 1: Initializing a Repository
 
 ## Overview:
